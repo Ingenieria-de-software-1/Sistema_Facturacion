@@ -226,9 +226,6 @@ namespace Capadatos
             }
         }
 
-        
-
-
         public string Insertarrol(Dusuario dusuario)
         {
             using (var SqlCon = Getconection())
@@ -279,8 +276,7 @@ namespace Capadatos
                 return Respuesta;
             }
         }
-         
-            
+                     
         public string Editar(Dusuario Usuario)
         {
             using (var SqlCon = Getconection())
@@ -613,12 +609,6 @@ namespace Capadatos
             }
         }
 
-       
-
-
-
-     
-
         public bool Isguid()
         {
             string Thisguid = GetMachingGuid();
@@ -641,7 +631,6 @@ namespace Capadatos
                 return true;
             }
         }
-
 
         public void Obtenerrol()
         {
@@ -726,7 +715,6 @@ namespace Capadatos
 
         }
 
-
     public void Sendemail(string Correo, string Asunto)
         {
             using (var  Conection = Getconection())
@@ -766,14 +754,14 @@ namespace Capadatos
         {
             using (var conection = Getconection())
             {
-               Datoscahe.Keyserial=GetMachingGuid();  
+                Datoscahe.Keyserial = GetMachingGuid();
                 conection.Open();
                 using (var command = GetSqlCommand())
                 {
                     command.Connection = conection;
-                    command.CommandText = "select * from Computadora_id where Identificador =@identificador and Estatus = @Estatus";
-                    command.Parameters.AddWithValue("@identificador",GetMachingGuid());
-                    command.Parameters.AddWithValue("@Estatus","Activa");
+                    command.CommandText = "select * from Terminales where Identificador =@Identificador and Estatus = @Estatus";
+                    command.Parameters.AddWithValue("@identificador", GetMachingGuid());
+                    command.Parameters.AddWithValue("@Estatus", "Activa");
                     command.CommandType = CommandType.Text;
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.HasRows)
@@ -830,12 +818,5 @@ namespace Capadatos
                 }
             }
         }
-
-       
-
-
-
-
-
     }
 }
